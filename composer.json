@@ -1,0 +1,15 @@
+{
+    "name": "lms/lms",
+    "autoload": {
+        "psr-4": {
+            "Lms\\Lms\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "AARB2006",
+            "email": "augustusantoine2006@gmail.com"
+        }
+    ],
+    "require": {}
+}
