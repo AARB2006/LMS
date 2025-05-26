@@ -25,7 +25,7 @@
         $result = mysqli_query($conn, $check);
 
         if (mysqli_num_rows($result) > 0){ //there are already existing rows in database. DO NOT create an admin account
-            mysqli_close($conn);
+            // mysqli_close($conn);
         
         }
 
@@ -51,7 +51,7 @@
             $stmt->execute();
             
             $stmt->close();
-            mysqli_close($conn);
+            // mysqli_close($conn);
             
         }
 

@@ -1,16 +1,72 @@
 <?php
 
-    //creates the first admin account when the site is first run (and db is still empty)
     require_once '../connections and functions/createAdmin.php';
     require_once '../connections and functions/dbconn.php';
     require_once '../security/hashing.php';
     session_start();
 
-    $conn = connect(); // Connect to the database
-    createAdmin($conn); // Create the admin user if no users exist
+    $conn = connect();
+    createAdmin($conn);
 
-    //add the login logic here
+    $loginFailed = false;
 
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        if (empty($_POST['username']) || empty($_POST['password'])) {
+            $_SESSION['login_error'] = true;
+            header("Location: " . $_SERVER['PHP_SELF']);
+            exit();
+        } else {
+            $username = htmlspecialchars(trim($_POST['username'] ?? ''), ENT_QUOTES, 'UTF-8');
+            $password = trim($_POST['password'] ?? '');
+
+            $stmt = $conn->prepare("SELECT name, role, password FROM users WHERE username = ?");
+            $stmt->bind_param("s", $username);
+            $stmt->execute();
+            $stmt->store_result();
+
+            if ($stmt->num_rows > 0) {
+                $stmt->bind_result($name, $role, $hashedPassword);
+                $stmt->fetch();
+
+                if (password_verify($password, $hashedPassword)) {
+                    $_SESSION['loggedIn'] = true;
+                    $_SESSION['name'] = $name;
+
+                    if ($role === 'student') {
+                        header("Location: ../landing pages/student/student.php");
+                        exit();
+                    }
+                    if ($role === 'teacher') {
+                        header("Location: ../landing pages/teacher/teacher.php");
+                        exit();
+                    }
+                    if ($role === 'admin') {
+                        header("Location: ../landing pages/admin/admin.php");
+                        exit();
+                    }
+                } else {
+                    $_SESSION['login_error'] = true;
+                    header("Location: " . $_SERVER['PHP_SELF']);
+                    exit();
+                }
+            } else {
+                $_SESSION['login_error'] = true;
+                header("Location: " . $_SERVER['PHP_SELF']);
+                exit();
+            }
+            $stmt->close();
+        }
+    }
+
+    // After redirect, check and clear the error
+    if (isset($_SESSION['login_error'])) {
+        $loginFailed = true;
+        unset($_SESSION['login_error']);
+    }
+
+    if ($conn) {
+        mysqli_close($conn);
+    }
 ?>
 
 
@@ -66,7 +122,9 @@
 
                 <form action="" method = "POST" class="space-y-4">
 
-                        <p id = "errormsg" class = "bg-[rgb(223,172,172)] p-2 rounded-lg hidden">Invalid Login,please Try Again</p>
+                        <p id="errormsg" class="bg-[rgb(223,172,172)] p-2 rounded-lg <?php echo $loginFailed ? '' : 'hidden'; ?>">
+                            Invalid Login,please Try Again
+                        </p>
 
                         <!-- Username Input -->
                         <div class="space-y-2">
