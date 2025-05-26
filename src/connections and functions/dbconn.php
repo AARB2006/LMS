@@ -17,14 +17,12 @@
 
         $conn = mysqli_connect($host, $user, $password, $dbName);
 
-                if ($conn->error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
+            if (!$conn) {
+                die("Connection failed: " . mysqli_connect_error());
+            }
     
         return $conn;
-
-        
-    }
+} 
 
 
 

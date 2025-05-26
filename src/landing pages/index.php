@@ -1,18 +1,36 @@
+<?php
+
+    //creates the first admin account when the site is first run (and db is still empty)
+    require_once '../connections and functions/createAdmin.php';
+    require_once '../connections and functions/dbconn.php';
+    require_once '../security/hashing.php';
+    session_start();
+
+    $conn = connect(); // Connect to the database
+    createAdmin($conn); // Create the admin user if no users exist
+
+    //add the login logic here
+
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../output.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../output.css">
 </head>
 <body class = "flex flex-col min-h-screen bg-[url('../../imgs/background.jpg')] bg-cover bg-center">
     <!-- This is a landing page for the project. -->
 
     <div class="flex items-center justify-center min-h-screen">
 
-        <div class="bg-white p-8 rounded-lg shadow-md">
+        <div class="bg-white p-8 rounded-lg shadow-lg">
 
            <div class="flex">
 
@@ -45,7 +63,11 @@
 
             <!-- Right Side -->
             <div class="flex-1 pl-7">
+
                 <form action="" method = "POST" class="space-y-4">
+
+                        <p id = "errormsg" class = "bg-[rgb(223,172,172)] p-2 rounded-lg hidden">Invalid Login,please Try Again</p>
+
                         <!-- Username Input -->
                         <div class="space-y-2">
                             <input type="text" 
@@ -61,14 +83,6 @@
                                 id="password"
                                 placeholder="Password:"
                                 class="w-full p-2 border border-gray-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all">
-                        </div>
-
-                        <!-- Remember Username Checkbox -->
-                        <div class="flex items-center space-x-1">
-                            <input type="checkbox" 
-                                id="showPassword" 
-                                class="rounded border-gray-300 text-rose-700 focus:ring-black">
-                            <label for="showPassword" class="text-sm">Remember Username</label>
                         </div>
 
                         <!-- Submit Button -->
@@ -90,7 +104,6 @@
         </div>
 
     </div>
-    
     
 
 </body>

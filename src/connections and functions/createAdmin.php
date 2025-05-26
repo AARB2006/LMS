@@ -33,6 +33,7 @@
 
         else{
 
+            $name = " Admin User"; // Default name for the first admin user
             $username = $_ENV['FIRST_USERNAME'];
             $password = $_ENV['FIRST_PASSWORD'];
             $email = $_ENV['FIRST_EMAIL'];
@@ -44,16 +45,14 @@
                  VALUES (?, ?, ?, ?, 'admin')";
             
             $stmt = $conn->prepare($query);
-            $stmt->bind_param("ssss", "", $username, $email, $hashedPassword);
+            $stmt->bind_param("ssss", $name, $username, $email, $hashedPassword);
             
-            if($stmt->execute()){
-                echo "Admin user created successfully";
-            } else {
-                echo "Error creating admin user: " . $stmt->error;
-            }
+             
+            $stmt->execute();
             
             $stmt->close();
             mysqli_close($conn);
+            
         }
 
     
