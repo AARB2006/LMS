@@ -84,6 +84,9 @@
 <body class = "flex flex-col min-h-screen bg-[url('../../imgs/background.jpg')] bg-cover bg-center">
     <!-- This is a landing page for the project. -->
 
+    
+    
+    
     <div class="flex items-center justify-center min-h-screen">
 
         <div class="bg-white p-8 rounded-lg shadow-lg">
