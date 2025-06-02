@@ -15,14 +15,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../../output.css">
+    <link rel="stylesheet" href="../../../../dist/output.css">
 </head>
-<body class = "flex flex-col min-h-screen">
+<body class = "flex flex-col min-h-screen ">
 
     
 
     <div
-        class = "bg-[#f3f8f1] shadow-md sticky top-0 w-full p-4 flex items-center justify-between"
+        class = " shadow-md sticky top-0 w-full p-4 flex items-center justify-between"
     >
         <div class="flex items-center space-x-10">
 
@@ -59,8 +59,47 @@
       </div>
 
     </div>
-
+  
   </div>
+
+  
+
+  
+
+<div class="flex justify-center mt-7 p-4">
+
+  <div class="w-full p-5 rounded-lg shadow-md space-x-4">
+
+    <div class = "w-full mb-6 pb-2 shadow-md">
+      <h1 class = "pl-5 text-gray-800 font-bold text-[20px]">Latest Announcements</h1>
+    </div>
+
+    <div class = "flex items-center justify-between">
+
+      <button class="bg-gray-200 font-semibold px-10 py-6 rounded shadow w-full sm:w-[340px] text-center">
+        Add Announcement
+      </button>
+      <button class="bg-red-700 hover:bg-red-800 font-semibold px-10 py-6 rounded shadow w-full sm:w-[340px] text-white text-center">
+        Add Course
+      </button>
+      <button class="bg-red-700 hover:bg-red-800 font-semibold px-10 py-6 rounded shadow w-full sm:w-[340px] text-white text-center">
+        Add Student
+      </button>
+      <button class="bg-red-700 hover:bg-red-800 font-semibold px-10 py-6 rounded shadow w-full sm:w-[340px] text-white text-center">
+        Add Professor
+      </button>
+
+    </div>
+
+    
+    
+  </div>
+
+</div>
+
+
+
+
 
   <!-- JavaScript for Toggle -->
   <script>

@@ -79,7 +79,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="../output.css">
+    <link rel="stylesheet" href="../../../dist/output.css">
 </head>
 <body class = "flex flex-col min-h-screen bg-[url('../../imgs/background.jpg')] bg-cover bg-center">
     <!-- This is a landing page for the project. -->
@@ -102,7 +102,7 @@
                 <div class="text-center">
 
                     <div class="flex items-center justify-center space-x-4">
-                        <h3 class="font-semibold text-xl text-gray-700">Contact Us:</h3>
+                        <h3 class="font-semibold text-xl text-gray-800">Contact Us:</h3>
                         
                         <button class="w-8 h-8 bg-[rgb(27,27,27)] text-white rounded-md hover:bg-[rgb(69,69,69)] transition-colors">
                             <i class="fas fa-phone"></i>
