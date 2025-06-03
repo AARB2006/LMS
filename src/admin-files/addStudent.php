@@ -1,5 +1,5 @@
 <?php
-    require_once '../../connections and functions/dbconn.php';
+    require_once '../connections and functions/dbconn.php';
     $conn = connect();
     session_start();
     $isLoggedIn = isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] === true;
@@ -10,7 +10,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Document</title>
+  <title>Bruh</title>
   <link rel="stylesheet" href="../../../../dist/output.css"/>
 </head>
 <body class="flex min-h-screen bg-gray-50">
@@ -94,7 +94,7 @@
           <button class="bg-[rgb(27,27,27)] hover:bg-[rgb(69,69,69)] font-semibold px-10 py-6 rounded shadow w-full sm:w-[320px] text-white text-center">
             Add Course
           </button>
-          <button onclick="location.href='../../admin-files/addStudent.php'" class="bg-[rgb(27,27,27)] hover:bg-[rgb(69,69,69)] font-semibold px-10 py-6 rounded shadow w-full sm:w-[320px] text-white text-center">
+          <button class="bg-[rgb(27,27,27)] hover:bg-[rgb(69,69,69)] font-semibold px-10 py-6 rounded shadow w-full sm:w-[320px] text-white text-center">
             Add Student
           </button>
           <button class="bg-[rgb(27,27,27)] hover:bg-[rgb(69,69,69)] font-semibold px-10 py-6 rounded shadow w-full sm:w-[320px] text-white text-center">
